@@ -33,7 +33,7 @@ class Keep_serv00:
             print(f"Failed to start web: {stderr.read().decode()}")
 
     @staticmethod
-    def run_bot(client):
+    def run_bot(client, argo_token):
         cmd = f'nohup /home/$USER/.vmess/bot tunnel --edge-ip-version auto --no-autoupdate --protocol http2 run --token "{argo_token}" > /home/$USER/.vmess/bottest.log 2>&1 &'
         _, stdout, stderr = client.exec_command(cmd)
 
@@ -59,7 +59,7 @@ class Keep_serv00:
                 Keep_serv00.run_web(client)
 
             if not Keep_serv00.check_process(client, "bot"):
-                Keep_serv00.run_bot(client)
+                Keep_serv00.run_bot(client, self.argo_token)
 
         except TimeoutError as e:
             print(e)
