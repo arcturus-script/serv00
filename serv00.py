@@ -45,6 +45,9 @@ class Keep_serv00:
         client.set_missing_host_key_policy(pk.AutoAddPolicy())
 
         try:
+            print(f"Connecting to server:")
+            print(f"  Hostname: {Keep_serv00._hostname}, Port: {Keep_serv00._port}")
+
             client.connect(
                 Keep_serv00._hostname,
                 Keep_serv00._port,
