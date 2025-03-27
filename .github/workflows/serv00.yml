@@ -22,5 +22,10 @@ jobs:
           pip install paramiko
 
       - name: Run serv00.py # 运行脚本
-        run: |
-          python serv00.py
+        env: # 环境变量
+          ARGO_TOKEN: ${{ secrets.ARGO_TOKEN }}
+          USERNAME: ${{ secrets.USERNAME }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+          HOSTNAME: ${{ secrets.HOSTNAME }}
+          PORT: ${{ secrets.PORT }}
+        run: python serv00.py
